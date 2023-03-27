@@ -11,12 +11,14 @@ header:
 categories:
   - springboot
   - practise
+  - testing
 tags:  
-  - grpc
+  - contract
   - java
   - springboot
   - api
   - rest
+  - testing
 ---
 
 ![](/assets/images/htb-writeup-delivery/delivery_logo.png)
