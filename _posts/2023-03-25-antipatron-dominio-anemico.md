@@ -9,17 +9,15 @@ header:
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:
-  - springboot
-  - practise
-  - kafka
-  - reactive
-tags:  
-  - springboot
-  - java
+  - antipattern
+  - pattern
   - POO
-  - kafka
-  - stream
-  - reactive
+  - programming
+tags:  
+  - antipattern
+  - pattern
+  - POO
+  - programming
 ---
 
 ![](/assets/images/htb-writeup-delivery/delivery_logo.png)
