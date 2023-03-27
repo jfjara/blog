@@ -1,7 +1,7 @@
 ---
 title: "About"
 permalink: /about/
-date: 2019-02-15
+date: 2023-01-21
 ---
 
 Mi nombre es Juan Francisco Jara Bellido. Soy Ingeniero Técnico Informático enfocado en tareas de análisis, liderazgo de equipos y desarrollo, con más de 20 años de experiencia en diferentes lenguajes y tecnologías. 
