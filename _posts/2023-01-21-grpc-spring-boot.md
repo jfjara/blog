@@ -445,4 +445,4 @@ y obtenemos el resultado:
 
 Hemos generado de manera muy sencilla servicios y mensajes mediante el lenguaje protobuf, desarrollado un servidor implementando estos servicios y un cliente que los consume. Para poder observar los resultados hemos creado en el cliente una API REST con una llamada de ejemplo para obtener resultados consultados al servidor. Vemos que el uso y manejo de gRPC está integrado de manera muy sencilla e intuitiva al framework de Spring Boot por lo que facilita aún más si cabe el uso de este tipo de llamadas.
 
-A continuación os invito a seguirme en GitHub, donde podrás encontrar la implementación completa de este proyecto. https://github.com/jfjara/spring-boot-grpc
+A continuación os invito a seguirme en GitHub, donde podrás encontrar la implementación completa de este [proyecto.](https://github.com/jfjara/spring-boot-grpc)

@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Contract testing con Spring Cloud Contract"
-excerpt: ""
+excerpt: "¿A quién no le ha ocurrido alguna vez en su trabajo que desde el equipo front te indiquen que falta algún campo en el json de respuesta y tu juras que no falta nada y luego resulta que dicho campo no estaba definido en el contrato inicial? ¿O que cambias algo en el contrato de un productor y de repente los consumidores de dicho mensaje ya no funcionan?"
 date: 2023-01-25
 classes: wide
 header:
@@ -387,4 +387,4 @@ Expected: a JSON object
 
 En este caso nos indica que esperamos un objeto json (que solo contiene un atributo name) pero que obtenemos del stub un array, por lo que no cumple el contrato.
 
-Y como siempre, aquí tienen un ejemplo completo en mi repositorio de GitHub. https://github.com/jfjara/Spring-Cloud-Contract-Examples
+Y como siempre, aquí tienen un ejemplo completo en mi repositorio de [GitHub.](https://github.com/jfjara/Spring-Cloud-Contract-Examples)

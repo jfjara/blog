@@ -4,6 +4,8 @@ permalink: /about/
 date: 2023-01-21
 ---
 
+## ¿Quién soy?
+
 Mi nombre es Juan Francisco Jara Bellido. Soy Ingeniero Técnico Informático enfocado en tareas de análisis, liderazgo de equipos y desarrollo, con más de 20 años de experiencia en diferentes lenguajes y tecnologías. 
 
 Me apasiona la investigación de nuevas tecnologías y arquitecturas para poder ponerlas en práctica en proyectos reales.
@@ -12,7 +14,7 @@ Actualmente me dedico al desarrollo Backend con Microservicios y funciones de l�
 
 Me defino como una persona comunicativa, emprendedora, positiva, comprometida con los proyectos en los que participo y con iniciativa.
 
-Stack principal:
+## Mi Stack principal
 
 - Java (1.8, 11, 17)
 - Spring boot, MVC, Data, Security...

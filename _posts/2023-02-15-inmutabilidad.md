@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Inmutabilidad"
-excerpt: ""
+excerpt: "¿Nunca os ha pasado que, cuando en un entorno laboral tecnológico heredáis lo que las compañías suelen llamar código legacy (o comúnmente, código de mierda arcano -o no tan arcano-), intentáis realizar el seguimiento de la vida de un objeto de dominio, y este pasa por tantas partes y lo modifica tantos procesos que le perdéis la pista a su contenido, o se os escapa por qué leches hay un valor que se esta modificando y no tenéis ni idea de dónde? Pues a mi si me ha pasado. Muchas veces. En muchos proyectos de esos heredados. Y es un verdadero fastidio, aunque en estos casos suele ocurrir, aparte de no aplicar la inmutabilidad de los objetos, que existan muchos antipatrones que se deberían de evitar a toda costa."
 date: 2023-01-25
 classes: wide
 header:
@@ -142,13 +142,7 @@ De este modo, devolvemos una copia del objeto edad, por mucho que modifiquemos e
 
 Acabamos de mostrar una forma de crear clases inmutables. Veamos otras formas, más enfocadas a clases que tengan más atributos. Pongamos que tenemos que implementar una clase que tenga muchos atributos. Bueno, pongamos no muchos, 6 atributos. No son muchos para una clase, aunque si lo son para un constructor o un método. Citando a Robert C. Martin en su libro "Clean Code":
 
-```
-
-El número ideal de argumentos para una función es cero. Después uno (monádico) y dos (diádico). Siempre que sea posible, evite la presencia de tres argumentos (triádico). Más de tres argumentos (poliádico) requiere una justificación especial y no es muy habitual.
-
-Robert C. Martin, después de ver una función con 8 parámetros de entrada.
-
-```
+> El número ideal de argumentos para una función es cero. Después uno (monádico) y dos (diádico). Siempre que sea posible, evite la presencia de tres argumentos (triádico). Más de tres argumentos (poliádico) requiere una justificación especial y no es muy habitual. — Robert C. Martin, después de ver una función con 8 parámetros de entrada.
 
 Por extensión, cambiemos la palabra método por constructor. Es poco legible un constructor de este tipo:
 
