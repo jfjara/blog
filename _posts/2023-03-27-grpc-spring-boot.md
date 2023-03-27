@@ -1,6 +1,6 @@
 ---
 layout: single
-title: gRPC - Caso práctico con Spring Boot
+title: "gRPC Caso práctico con Spring Boot"
 excerpt: "A pesar de las enormes ventajas que proporciona este sistema de llamadas pocas son las empresas que apuestan por su uso frente a una ya muy extendida y casi obligatoria arquitectura API REST. Pero, ¿por qué se debe esto?"
 date: 2023-01-21
 classes: wide
