@@ -9,14 +9,14 @@ header:
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:
-  - hackthebox
-  - infosec
+  - springboot
+  - practise
 tags:  
-  - osticket
-  - mysql
-  - mattermost
-  - hashcat
-  - rules
+  - grpc
+  - java
+  - springboot
+  - api
+  - rest
 ---
 
 ![](/assets/images/htb-writeup-delivery/delivery_logo.png)
