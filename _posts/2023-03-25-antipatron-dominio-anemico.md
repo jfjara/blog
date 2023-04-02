@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Antipatrón\: Dominio Anémico"
+title: "Antipatrón Dominio Anémico"
 excerpt: "Hace un tiempo me di cuenta de que los desarrolladores (sobre todo los de Java) caemos en una mala práctica a la hora de desarrollar nuestros proyectos sin darnos cuenta. Te invito a que mires cualquier proyecto que tengas y mires tus clases de dominio. ¿Ya? Bien, seguramente solo veas clases que no suelen ser más que un conjunto de datos que no hacen nada (los llamados DTO, POJOS, Beans…). Pues si amigos, según nuestro amigo Martin Fowler, eso es un antipatrón de diseño (curiosamente, el término POJO fue creado por la misma persona). Pero vayamos a la cuestión principal, ¿qué es un dominio anémico? Pues dicho rápidamente, son clases que no hacen nada, solo contender datos y estados, lo cual rompe con el paradigma de la programación orientada a objetos. ¿Y esto es malo?"
 date: 2023-03-25
 classes: wide
