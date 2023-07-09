@@ -64,9 +64,9 @@ La respuesta se basa en la reactividad de nuestro servicio y circuit breaker. El
 
 Ahora bien, ¿cómo podemos resolver este problema? Veamos dos opciones para resolverlo:
 
-- La primera es envolver nuestro método del repositorio con un try-catch:
+- ** La primera es envolver nuestro método del repositorio con un try-catch: **
 
-´´´
+```
 
 @CircuitBreaker(name = "circuitBreakerService", fallbackMethod = "myFallback")
 public Mono<String> getTextFromApi(final Long id) {
@@ -77,13 +77,13 @@ public Mono<String> getTextFromApi(final Long id) {
     }
 }
 
-´´´
+```
 
 Esta solución, en mi opinión, es la menos correcta de todas. El circuit breaker en si es un try-catch (sin haber entrado en las entrañas de Resilience4j entiendo que funciona mediante aspectos, y ahi es donde tendrá el try-catch y la llamada a fallback, que se hará mediante reflexión, si no es así se le acercará) y como tal no tiene sentido anidar estos bloques de instrucciones. Aunque se hace "por debajo", el resultado queda una mezcla de paradigma reactivo con programación estructurada que no atrae demasiado. Veamos más opciones.
 
-- La siguiente es envolver la respuesta en una entidad Mono, de ese modo podremos manejar las excepciones de manera reactiva. Para ello podemos utilizar los métodos Mono.defer o Mono.create:
+- ** La siguiente es envolver la respuesta en una entidad Mono, de ese modo podremos manejar las excepciones de manera reactiva. Para ello podemos utilizar los métodos Mono.defer o Mono.create: **
 
-´´´
+```
 
 @CircuitBreaker(name = "circuitBreakerService", fallbackMethod = "myFallback")
 public Mono<String> getTextFromApi(final Long id) {
@@ -94,9 +94,9 @@ public Mono<String> getTextFromApi(final Long id) {
           });
 }
 
-´´´
+```
 
-´´´
+```
 
 @CircuitBreaker(name = "circuitBreakerService", fallbackMethod = "myFallback")
 public Mono<String> getTextFromApi(final Long id) {
@@ -110,11 +110,11 @@ public Mono<String> getTextFromApi(final Long id) {
   });
 }
 
-´´´
+```
 
 Vemos que la opción 'defer' es más limpia que con 'create', aunque con 'create' tenemos más posibilidades ya que controlamos la señal a emitir a los consumidores. Según la documentación, podemos usar Mono.just, Mono.defer y Mono.create para publicar datos a los consumidores que se suscriben al Mono, pero se recomienda siempre ese orden, uso de instrucción más sencilla a más compleja. Pero, ¿por qué no podemos solucionar este problema con un Mono.just? La respuesta es la 'evaluación diferida'. Mientras 'defer' y 'create' tienen este comportamiento, 'just' no. Mono.just se usa una vez tiene un valor ya calculado (este se establece en el momento de la composición), mientras los otros montan la 'canalización reactiva', trabajando con una expresión en lugar de un valor concreto como hace 'just', resolviéndose en el momento que nos suscribimos.
 
-Otra opción es realizar una doble validación, concretamente realizar la misma validación de la api previamente a la llamada y asi controlar nosotros mismos la gestión de esa excepción: nos aseguramos que si realizamos la llamada nunca esas excepciones se van a lanzar.
+- ** Otra opción es realizar una doble validación, concretamente realizar la misma validación de la api previamente a la llamada y asi controlar nosotros mismos la gestión de esa excepción: nos aseguramos que si realizamos la llamada nunca esas excepciones se van a lanzar. **
 
 ** Deseo que este pequeño artículo os ayude. Si conocen otro método para resolver este problema, estaré encantado de conocerlo, pueden escribir a juanfranciscojara@gmail.com **
 
