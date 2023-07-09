@@ -2,7 +2,7 @@
 layout: single
 title: "Problema en Circuit Breaker reactivo cuando se lanzan excepciones fuera del ámbito reactivo con Spring Boot y Webflux"
 excerpt: "En el siguiente post comentamos por qué no se ejecuta el fallback de un circuit breaker reactivo de Resilience4j cuando se lanza una excepción desde un servicio o repositorio externo."
-date: 2023-04-02
+date: 2023-07-09
 classes: wide
 header:
   teaser: /assets/images/htb-writeup-delivery/delivery_logo.png
