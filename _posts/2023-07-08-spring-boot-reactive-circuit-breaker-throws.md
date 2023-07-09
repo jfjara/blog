@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Problema en Circuit Breaker reactivo cuando se lanzan excepciones con Spring Boot y Webflux"
+title: "Problema en Circuit Breaker reactivo cuando se lanzan excepciones fuera del ámbito reactivo con Spring Boot y Webflux"
 excerpt: "En el siguiente post comentamos por qué no se ejecuta el fallback de un circuit breaker reactivo de Resilience4j cuando se lanza una excepción desde un servicio o repositorio externo."
 date: 2023-04-02
 classes: wide
@@ -60,7 +60,7 @@ public Mono<MockServiceResponse> getTextFromApi(final Long id) {
 
 Si en algún momento el parámetro 'id' llega al servicio con valor null, la excepción se lanzará, y veremos que el circuit breaker no se activa. Pero, ¿por qué?
 
-La respuesta se basa en la reactividad de nuestro servicio y circuit breaker. El método de la api autogenerada, cuando realiza la validación y lanzar la excepción en caso de no cumplirse, lanza un excepción, no un Mono.error. No da tiempo a montar dicha estructura, por lo que en nuestro circuit breaker, el cual espera un Mono.error para poder activarse, no lo recibe e ignora la excepción lanzada.
+La respuesta se basa en la reactividad de nuestro servicio y circuit breaker. El método de la api autogenerada si no cumple la validación lanza una excepción en lugar de devolver un Mono.error por lo que no da tiempo a montar dicha estructura y en nuestro circuit breaker, el cual espera un Mono.error para poder activarse, no lo recibe e ignora la excepción lanzada.
 
 Ahora bien, ¿cómo podemos resolver este problema? Veamos dos opciones para resolverlo:
 
