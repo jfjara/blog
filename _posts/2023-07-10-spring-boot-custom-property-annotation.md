@@ -57,7 +57,6 @@ Nos interesa solo declarar en el application context uno de esos beans dependien
 public class DatabaseCondition implements Condition {
 
     private static final String APP_DATABASE_PROPERTY = "app.database";
-    private static final String VALUE_ANNOTATION_METHOD = "databaseName";
 
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
@@ -69,9 +68,9 @@ public class DatabaseCondition implements Condition {
         }
 
         var databaseOnConditionalAnnotation = annotatedTypeMetadata.getAllAnnotationAttributes(DatabaseOnConditional.class.getName());
-        var databaseAnnotationValue = (String) databaseOnConditionalAnnotation.getFirst(VALUE_ANNOTATION_METHOD);
+        var databaseAnnotationValue = (DatabaseType) databaseOnConditionalAnnotation.getFirst(DatabaseOnConditional.VALUE_TAG);
 
-        return databaseAnnotationValue.equals(databasePropertyValue);
+        return databaseAnnotationValue.name().equalsIgnoreCase(databasePropertyValue);
     }
     
 }
@@ -91,9 +90,18 @@ Para ello, creamos un anotación que nos permitirá realizar dicha carga.
 @Target({ElementType.METHOD})
 @Conditional(DatabaseCondition.class)
 public @interface DatabaseOnConditional {
-
-    String databaseName();
+    public static final String VALUE_TAG = "value";
+    String value();
     
+}
+
+```
+
+```
+
+public enum DatabaseType {
+    POSTGRESQL,
+    MONGODB
 }
 
 ```
@@ -106,14 +114,14 @@ La anotación *Retention* nos indica cuando se chequea la anotación, en este ca
 public class DatabaseConfig {
 
     @Bean
-    @DatabaseOnConditional(databaseName = "postgresql")
+    @DatabaseOnConditional(DatabaseType.POSTGRESQL)
     UserRepository userPostgreSQLRepository() {
         log.info(":: Load PostgreSQL database bean ::");
         return new UserPostgreSQLRepository();
     }
 
     @Bean
-    @DatabaseOnConditional(databaseName = "mongodb")
+    @DatabaseOnConditional(DatabaseType.MONGODB)
     UserRepository userMongoDbRepository() {
         log.info(":: Load MongoDB database bean ::");
         return new UserMongoDbRepository();
