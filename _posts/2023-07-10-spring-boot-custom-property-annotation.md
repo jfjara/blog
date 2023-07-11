@@ -91,7 +91,7 @@ Para ello, creamos un anotación que nos permitirá realizar dicha carga.
 @Conditional(DatabaseCondition.class)
 public @interface DatabaseOnConditional {
     public static final String VALUE_TAG = "value";
-    String value();
+    DatabaseType value();
     
 }
 
