@@ -1,22 +1,24 @@
 ---
 layout: single
-title: "gRPC Caso práctico con Spring Boot"
-excerpt: "A pesar de las enormes ventajas que proporciona este sistema de llamadas pocas son las empresas que apuestan por su uso frente a una ya muy extendida y casi obligatoria arquitectura API REST. Pero, ¿por qué se debe esto?"
-date: 2023-01-21
+title: "Implementing the Saga Pattern (Orchestrated Version) with Micronaut"
+excerpt: "In distributed systems development, one of the biggest challenges is maintaining data consistency when an operation spans multiple independent services.~~  
+The classic example: a user places an order, payment is processed, and shipment is handled. Three services, three responsibilities, one single flow."
+date: 2025-11-26
 classes: wide
 header:
   teaser: /assets/images/htb-writeup-delivery/delivery_logo.png
   teaser_home_page: true
   icon: /assets/images/hackthebox.webp
 categories:
-  - springboot
+  - java
+  - micronaut
+  - architecture
   - practise
 tags:  
-  - grpc
   - java
-  - springboot
-  - api
-  - rest
+  - micronaut
+  - saga
+  - architecture
 ---
 
 ![](/assets/images/htb-writeup-delivery/delivery_logo.png)
@@ -25,7 +27,7 @@ tags:
 
 A practical and simple example to understand distributed transactions.
 
-In distributed systems development, one of the biggest challenges is maintaining data consistency when an operation spans multiple independent services.  
+In distributed systems development, one of the biggest challenges is maintaining data consistency when an operation spans multiple independent services.~~  
 The classic example: a user places an order, payment is processed, and shipment is handled. Three services, three responsibilities, one single flow.
 
 In a monolithic architecture, it’s simple: one big transaction covers everything.  
