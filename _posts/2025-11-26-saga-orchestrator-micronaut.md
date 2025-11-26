@@ -132,7 +132,7 @@ public OrderResponseDTO manage(final OrderDTO orderDTO) {
 
 ## 🧵 Step 1: Create the Order
 
-```
+```java
 final String orderId = orderRepository.create(orderDTO);
 orderRepository.updateStatus(orderId, OrderStatusDTO.PENDING);
 ```
@@ -141,13 +141,13 @@ We create a new order and set it to PENDING. This marks the start of the Saga.
 
 ## 💳 Step 2: Attempt Payment
 
-```
+```java
 PaymentStatusDTO paymentResult = executePayment(orderDTO);
 ```
 
 executePayment delegates to the payment service:
 
-```
+```java
 private PaymentStatusDTO executePayment(OrderDTO orderDTO) {
 return paymentRepository
 .pay(orderDTO.userId(), orderDTO.product().price())
@@ -167,7 +167,7 @@ FAILED
 
 If the result is a failure:
 
-```
+```java
 private boolean isPaymentFailed(PaymentStatusDTO status) {
 return status == PaymentStatusDTO.WITHOUT_BALANCE
 || status == PaymentStatusDTO.FAILED;
@@ -176,7 +176,7 @@ return status == PaymentStatusDTO.WITHOUT_BALANCE
 
 The Saga stops:
 
-```
+```java
 return failOrder(orderId, OrderStatusDTO.PAYMENT_FAILED);
 ```
 
@@ -184,7 +184,7 @@ return failOrder(orderId, OrderStatusDTO.PAYMENT_FAILED);
 
 If payment succeeds:
 
-```
+```java
 ShipmentStatusDTO shipmentResult = executeShipment(orderId, orderDTO);
 
 private ShipmentStatusDTO executeShipment(String orderId, OrderDTO orderDTO) {
@@ -204,14 +204,14 @@ FAILED → shipment error, also need to compensate
 
 In both cases:
 
-```
+```java
 refund(orderDTO);
 return failOrder(orderId, OrderStatusDTO.OUT_OF_STOCK); // or CANCELLED
 ```
 
 ## 💸 Compensation Mechanism (Refund)
 
-```
+```java
 private void refund(OrderDTO orderDTO) {
 paymentRepository.refund(orderDTO.userId(), orderDTO.product().price());
 }
@@ -223,7 +223,7 @@ Compensation is the essence of the Saga: undo previous steps if something goes w
 
 If everything goes well:
 
-```
+```java
 orderRepository.updateStatus(orderId, OrderStatusDTO.SHIPPED);
 return new OrderResponseDTO(orderId, OrderStatusDTO.SHIPPED);
 ```
