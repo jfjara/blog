@@ -22,7 +22,6 @@ tags:
 
 ![](/assets/images/htb-writeup-delivery/delivery_logo.png)
 
-# 🧩 Implementing the Saga Pattern (Orchestrated Version) with Micronaut
 
 A practical and simple example to understand distributed transactions.
 
