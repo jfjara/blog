@@ -1,8 +1,7 @@
 ---
 layout: single
 title: "Implementing the Saga Pattern (Orchestrated Version) with Micronaut"
-excerpt: "In distributed systems development, one of the biggest challenges is maintaining data consistency when an operation spans multiple independent services.~~  
-The classic example: a user places an order, payment is processed, and shipment is handled. Three services, three responsibilities, one single flow."
+excerpt: "In distributed systems development, one of the biggest challenges is maintaining data consistency when an operation spans multiple independent services"
 date: 2025-11-26
 classes: wide
 header:
